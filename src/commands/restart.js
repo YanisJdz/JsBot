@@ -1,11 +1,11 @@
-const { SlashCommandBuilder, EmbedBuilder, Client } = require('discord.js');
-const { spawn } = require('child_process');
-const path = require('path');
+const { SlashCommandBuilder, EmbedBuilder, Client, PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('restart')
-        .setDescription('Redémarrer le JsBot'),
+        .setDescription('Redémarrer le JsBot -- Administrators only')
+        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
+        ,
     async execute(interaction) {
         const restartEmbed = new EmbedBuilder()
             .setTitle('Redémarrage du JsBot')
